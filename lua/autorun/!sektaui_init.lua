@@ -1,3 +1,5 @@
-SektaUI = {}
+---@class SektaUI
+_G.SektaUI = {}
 
-print("tbi")
+if SERVER then AddCSLuaFile("sektaui/init.lua") end
+include("sektaui/init.lua")
