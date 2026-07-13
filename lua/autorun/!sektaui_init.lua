@@ -1,1 +1,3 @@
+SektaUI = {}
+
 print("tbi")
