@@ -97,9 +97,10 @@ end
 ---@field corner_radius number
 ---@overload fun(): SUI_StyleBoxFlat
 local StyleBoxFlat = StyleBox:extend()
-StyleBoxFlat:implement(StyleBox)
 
 function StyleBoxFlat:new()
+    StyleBoxFlat.super.new(self)
+
     self.bg_color = color_white
     self.border_color = nil
     self.border_width = 0
