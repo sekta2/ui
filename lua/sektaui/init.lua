@@ -3,13 +3,19 @@
 --]]-------------------------------------
 
 if SERVER then
+    AddCSLuaFile("classic.lua")
+    AddCSLuaFile("rndx.lua")
     AddCSLuaFile("patch.lua")
     AddCSLuaFile("signal.lua")
     AddCSLuaFile("style.lua")
+    AddCSLuaFile("default.lua")
 else
+    include("classic.lua")
+    include("rndx.lua")
     include("patch.lua")
     include("signal.lua")
     include("style.lua")
+    include("default.lua")
 end
 
 --[[-------------------------------------
@@ -25,3 +31,8 @@ local function load_element(name)
 end
 
 load_element("base")
+load_element("control")
+load_element("buttonbase")
+load_element("button")
+load_element("label")
+load_element("texture")
