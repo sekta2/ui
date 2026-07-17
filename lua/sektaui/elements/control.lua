@@ -3,22 +3,14 @@
 ---@class SUI_Control: SUI_Base
 ---@field theme SUI_Theme?
 ---@field theme_override table<string, any>
----@field pressed boolean
 local PANEL = {}
 
 function PANEL:Init()
     self.theme_override = {}
-
-    self.pressed = false
 end
 
 ---@return string
 function PANEL:GetCurrentStyleState()
-    if not self:IsEnabled() then return "disabled" end
-    if self.pressed and self:IsHovered() then return "hover_pressed" end
-    if self.pressed then return "pressed" end
-    if self:IsHovered() then return "hover" end
-
     return "normal"
 end
 
@@ -57,22 +49,6 @@ end
 --[[-------------------------------------
     Hooks
 --]]-------------------------------------
-
----@param key_code number
----@private
-function PANEL:OnMousePressed(key_code)
-    if key_code ~= MOUSE_LEFT then return end
-
-    self.pressed = true
-end
-
----@param key_code number
----@private
-function PANEL:OnMouseReleased(key_code)
-    if key_code ~= MOUSE_LEFT then return end
-
-    self.pressed = false
-end
 
 ---@param width number
 ---@param height number
