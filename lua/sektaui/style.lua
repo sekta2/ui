@@ -116,6 +116,121 @@ function StyleBoxFlat:Draw(x, y, w, h)
 end
 
 --[[-------------------------------------
+    StyleBoxTexture
+--]]-------------------------------------
+
+---@alias SUI_StyleBoxTextureMode "border"|"stretch"|"center"
+
+---@class SUI_StyleBoxTexture: SUI_StyleBox
+---@field material IMaterial?
+---@field tex_x number
+---@field tex_y number
+---@field tex_w number
+---@field tex_h number
+---@field mode SUI_StyleBoxTextureMode
+---@field color Color
+---@overload fun(): SUI_StyleBoxTexture
+local StyleBoxTexture = StyleBox:extend()
+
+function StyleBoxTexture:new()
+    StyleBoxTexture.super.new(self)
+
+    self.material = nil
+
+    self.tex_x = 0
+    self.tex_y = 0
+    self.tex_w = 0
+    self.tex_h = 0
+
+    self.mode = "border"
+    self.color = color_white
+end
+
+---@private
+---@return number, number
+function StyleBoxTexture:GetTextureSize()
+    local tex = self.material:GetTexture("$basetexture")
+    return tex:Width(), tex:Height()
+end
+
+function StyleBoxTexture:Draw(x, y, w, h)
+    if not self.material then return end
+
+    if self.mode == "stretch" then
+        self:DrawStretch(x, y, w, h)
+    elseif self.mode == "center" then
+        self:DrawCenter(x, y, w, h)
+    else
+        self:DrawBorder(x, y, w, h)
+    end
+end
+
+---@private
+function StyleBoxTexture:DrawStretch(x, y, w, h)
+    local texW, texH = self:GetTextureSize()
+
+    local u1, v1 = self.tex_x / texW, self.tex_y / texH
+    local u2, v2 = (self.tex_x + self.tex_w) / texW, (self.tex_y + self.tex_h) / texH
+
+    surface.SetMaterial(self.material)
+    surface.SetDrawColor(self.color)
+    surface.DrawTexturedRectUV(x, y, w, h, u1, v1, u2, v2)
+end
+
+---@private
+function StyleBoxTexture:DrawCenter(x, y, w, h)
+    local texW, texH = self:GetTextureSize()
+
+    local cx = x + (w - self.tex_w) * 0.5
+    local cy = y + (h - self.tex_h) * 0.5
+
+    local u1, v1 = self.tex_x / texW, self.tex_y / texH
+    local u2, v2 = (self.tex_x + self.tex_w) / texW, (self.tex_y + self.tex_h) / texH
+
+    surface.SetMaterial(self.material)
+    surface.SetDrawColor(self.color)
+    surface.DrawTexturedRectUV(cx, cy, self.tex_w, self.tex_h, u1, v1, u2, v2)
+end
+
+---@private
+function StyleBoxTexture:DrawBorder(x, y, w, h)
+    local texW, texH = self:GetTextureSize()
+
+    local _x, _y = self.tex_x / texW, self.tex_y / texH
+    local _w, _h = self.tex_w / texW, self.tex_h / texH
+
+    -- клэмп границ, если бокс меньше суммы border'ов
+    local halfW, halfH = w * 0.5, h * 0.5
+    local left = math.min(self.margin_left, math.ceil(halfW))
+    local right = math.min(self.margin_right, math.floor(halfW))
+    local top = math.min(self.margin_top, math.ceil(halfH))
+    local bottom = math.min(self.margin_bottom, math.floor(halfH))
+
+    local _l = left / texW
+    local _t = top / texH
+    local _r = right / texW
+    local _b = bottom / texH
+
+    surface.SetMaterial(self.material)
+    surface.SetDrawColor(self.color)
+
+    -- top
+    surface.DrawTexturedRectUV(x, y, left, top, _x, _y, _x + _l, _y + _t)
+    surface.DrawTexturedRectUV(x + left, y, w - left - right, top, _x + _l, _y, _x + _w - _r, _y + _t)
+    surface.DrawTexturedRectUV(x + w - right, y, right, top, _x + _w - _r, _y, _x + _w, _y + _t)
+
+    -- middle
+    surface.DrawTexturedRectUV(x, y + top, left, h - top - bottom, _x, _y + _t, _x + _l, _y + _h - _b)
+    surface.DrawTexturedRectUV(x + left, y + top, w - left - right, h - top - bottom, _x + _l, _y + _t, _x + _w - _r, _y + _h - _b)
+    surface.DrawTexturedRectUV(x + w - right, y + top, right, h - top - bottom, _x + _w - _r, _y + _t, _x + _w, _y + _h - _b)
+
+    -- bottom
+    surface.DrawTexturedRectUV(x, y + h - bottom, left, bottom, _x, _y + _h - _b, _x + _l, _y + _h)
+    surface.DrawTexturedRectUV(x + left, y + h - bottom, w - left - right, bottom, _x + _l, _y + _h - _b, _x + _w - _r, _y + _h)
+    surface.DrawTexturedRectUV(x + w - right, y + h - bottom, right, bottom, _x + _w - _r, _y + _h - _b, _x + _w, _y + _h)
+end
+
+--[[-------------------------------------
     Exports
 --]]-------------------------------------
 
@@ -127,3 +242,4 @@ SektaUI.Theme = setmetatable(Theme, {
 
 SektaUI.StyleBox = StyleBox
 SektaUI.StyleBoxFlat = StyleBoxFlat
+SektaUI.StyleBoxTexture = StyleBoxTexture
