@@ -1,5 +1,8 @@
 ---@diagnostic disable assign-type-mismatch
 
+---@class Panel
+---@field ThisClass string
+
 ---@class SUI_Base: Panel
 ---@field SUI_BASED true
 ---@field root SUI_Base?
@@ -15,7 +18,7 @@ local PANEL = {
 
 ---@private
 function PANEL:Init()
-    self.name = self:GetName()
+    self.name = self.ThisClass
     self.children_index = {}
     self.unique_index = {}
 
