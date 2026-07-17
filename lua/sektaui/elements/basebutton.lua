@@ -1,4 +1,4 @@
----@class SUI_ButtonBase: SUI_Control
+---@class SUI_BaseButton: SUI_Control
 ---@field action_mode 1|2
 ---@field pressed boolean
 ---@field button_down SUI_Signal<fun()>
@@ -72,4 +72,4 @@ end
     Register
 --]]-------------------------------------
 
-vgui.Register("SUI_ButtonBase", PANEL, "SUI_Control")
+vgui.Register("SUI_BaseButton", PANEL, "SUI_Control")

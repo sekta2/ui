@@ -32,7 +32,7 @@ end
 
 load_element("base")
 load_element("control")
-load_element("buttonbase")
+load_element("basebutton")
 load_element("button")
 load_element("label")
 load_element("texture")

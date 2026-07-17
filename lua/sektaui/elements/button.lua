@@ -1,8 +1,8 @@
----@class SUI_Button: SUI_ButtonBase
+---@class SUI_Button: SUI_BaseButton
 local PANEL = {}
 
 --[[-------------------------------------
     Register
 --]]-------------------------------------
 
-vgui.Register("SUI_Button", PANEL, "SUI_ButtonBase")
+vgui.Register("SUI_Button", PANEL, "SUI_BaseButton")
