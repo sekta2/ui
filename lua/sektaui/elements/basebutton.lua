@@ -9,6 +9,8 @@ local PANEL = {
 }
 
 function PANEL:Init()
+    self:SetCursor("hand")
+
     self.action_mode = ACTION_MODE_BUTTON_PRESS
 
     self.pressed = false
