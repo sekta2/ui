@@ -4,7 +4,9 @@
 ---@field button_down SUI_Signal<fun()>
 ---@field button_up SUI_Signal<fun()>
 ---@field button_pressed SUI_Signal<fun()>
-local PANEL = {}
+local PANEL = {
+    SUI_Class = "SUI_BaseButton",
+}
 
 function PANEL:Init()
     self.action_mode = ACTION_MODE_BUTTON_PRESS

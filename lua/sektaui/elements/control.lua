@@ -3,7 +3,9 @@
 ---@class SUI_Control: SUI_Base
 ---@field theme SUI_Theme?
 ---@field theme_override table<string, any>
-local PANEL = {}
+local PANEL = {
+    SUI_Class = "SUI_Control",
+}
 
 function PANEL:Init()
     self.theme_override = {}
@@ -36,7 +38,7 @@ function PANEL:GetThemeParam(key)
         return self.theme_override[key]
     end
 
-    local name = self.ThisClass
+    local name = self.SUI_Class
     return (self:SUI_GetTheme()):GetElementParam(name, key)
 end
 

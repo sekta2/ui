@@ -1,5 +1,7 @@
 ---@class SUI_TextureRect: SUI_Control
-local PANEL = {}
+local PANEL = {
+    SUI_Class = "SUI_TextureRect"
+}
 
 --[[-------------------------------------
     Register

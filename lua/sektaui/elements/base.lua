@@ -13,12 +13,13 @@
 ---@field on_changed_name SUI_Signal<fun(obj: SUI_Base, old_name: string, new_name: string)>
 ---@field on_remove SUI_Signal<fun(obj: SUI_Base)>
 local PANEL = {
-    SUI_BASED = true
+    SUI_BASED = true,
+    SUI_Class = "SUI_Base"
 }
 
 ---@private
 function PANEL:Init()
-    self.name = self.ThisClass
+    self.name = self.SUI_Class
     self.children_index = {}
     self.unique_index = {}
 

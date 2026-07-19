@@ -1,5 +1,7 @@
 ---@class SUI_Label: SUI_Control
-local PANEL = {}
+local PANEL = {
+    SUI_Class = "SUI_Control"
+}
 
 --[[-------------------------------------
     Register
