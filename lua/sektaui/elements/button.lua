@@ -1,4 +1,5 @@
 ---@class SUI_Button: SUI_BaseButton
+---@field text string
 local PANEL = {
     SUI_Class = "SUI_Button",
 }
