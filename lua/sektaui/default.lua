@@ -9,7 +9,8 @@ local DefaultConvar = CreateClientConVar("sektaui_theme", "derma", true)
 --]]-------------------------------------
 
 local Default = {
-    Themes = {}
+    Themes = {},
+    GWENGMod = Material("gwenskin/GModDefault.png")
 }
 
 Default.Themes.Godot = SektaUI.Theme:new()
