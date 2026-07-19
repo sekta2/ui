@@ -25,7 +25,9 @@ end
 ---@private
 function PANEL:DrawContent(x, y, w, h)
     local font = self:GetThemeParam("font"):Get()
-    draw.SimpleText("Button", font, x + w / 2, y + h / 2, self:GetThemeParam(self.pressed and "font_pressed_color" or self:IsHovered() and "font_hover_color" or "font_normal_color"), TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER)
+    draw.SimpleText(self:GetText(), font, x + w / 2, y + h / 2,
+        self:GetThemeParam(self.pressed and "font_pressed_color" or self:IsHovered() and "font_hover_color" or
+        "font_normal_color"), TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER)
 end
 
 --[[-------------------------------------
