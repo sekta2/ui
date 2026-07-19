@@ -9,7 +9,8 @@ local PANEL = {
 ---@param h number
 ---@private
 function PANEL:DrawContent(x, y, w, h)
-    draw.SimpleText("Button", "DermaDefault", x + w / 2, y + h / 2, self:GetThemeParam(self.pressed and "font_pressed_color" or self:IsHovered() and "font_hover_color" or "font_normal_color"), TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER)
+    local font = self:GetThemeParam("font"):Get()
+    draw.SimpleText("Button", font, x + w / 2, y + h / 2, self:GetThemeParam(self.pressed and "font_pressed_color" or self:IsHovered() and "font_hover_color" or "font_normal_color"), TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER)
 end
 
 --[[-------------------------------------
@@ -18,6 +19,7 @@ end
 
 local DermaStyle = SektaUI.Default.Themes.Derma:AddElement("SUI_Button")
 
+DermaStyle.font = SektaUI.Default.DermaFont
 DermaStyle.font_normal_color = GWEN.TextureColor(4 + 8 * 2, 508)
 DermaStyle.font_hover_color = GWEN.TextureColor( 4 + 8 * 3, 508 )
 DermaStyle.font_pressed_color = GWEN.TextureColor( 4 + 8 * 2, 500 )
