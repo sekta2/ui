@@ -25,7 +25,6 @@ end
 ---@return string
 function PANEL:GetCurrentStyleState()
     if not self:IsEnabled() then return "disabled" end
-    if self.pressed and self:IsHovered() then return "hover_pressed" end
     if self.pressed then return "pressed" end
     if self:IsHovered() then return "hover" end
 
