@@ -8,6 +8,7 @@ if SERVER then
     AddCSLuaFile("patch.lua")
     AddCSLuaFile("signal.lua")
     AddCSLuaFile("style.lua")
+    AddCSLuaFile("font.lua")
     AddCSLuaFile("default.lua")
 else
     include("classic.lua")
@@ -15,6 +16,7 @@ else
     include("patch.lua")
     include("signal.lua")
     include("style.lua")
+    include("font.lua")
     include("default.lua")
 end
 
