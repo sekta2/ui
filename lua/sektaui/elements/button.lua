@@ -4,6 +4,20 @@ local PANEL = {
     SUI_Class = "SUI_Button",
 }
 
+function PANEL:Init()
+    self.text = "Button"
+end
+
+---@param text string
+function PANEL:SetText(text)
+    self.text = text
+end
+
+---@return string
+function PANEL:GetText()
+    return self.text
+end
+
 ---@param x number
 ---@param y number
 ---@param w number
