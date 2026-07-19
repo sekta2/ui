@@ -37,15 +37,17 @@ end
     Action Mode
 --]]-------------------------------------
 
+---@alias ACTION_MODE_BUTTON 1|2
+
 ACTION_MODE_BUTTON_PRESS = 1
 ACTION_MODE_BUTTON_RELEASE = 2
 
----@param mode 1|2
+---@param mode ACTION_MODE_BUTTON
 function PANEL:SetActionMode(mode)
     self.action_mode = mode
 end
 
----@return 1|2
+---@return ACTION_MODE_BUTTON
 function PANEL:GetActionMode()
     return self.action_mode
 end
