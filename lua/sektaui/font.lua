@@ -39,8 +39,12 @@ end
 
 local prefix = "SUI"
 
+function Font:GetName()
+    return self.name
+end
+
 function Font:CalcName()
-    return table.concat({prefix, self.font, self.size, self.weight, self.antialias}, "_")
+    return table.concat({prefix, self.font, self.size, self.weight, tostring(self.antialias)}, "_")
 end
 
 function Font:Compile()
