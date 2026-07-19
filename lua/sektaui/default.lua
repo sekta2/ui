@@ -13,6 +13,20 @@ local Default = {
     GWENGMod = Material("gwenskin/GModDefault.png")
 }
 
+if system.IsLinux() then
+    Default.DermaFont = SektaUI.Font({
+        font = "DejaVu Sans",
+        size = 14,
+        weight = 500
+    })
+else
+    Default.DermaFont = SektaUI.Font({
+        font = "Tahoma",
+        size = 13,
+        weight = 500
+    })
+end
+
 Default.Themes.Godot = SektaUI.Theme:new()
 Default.Themes.Derma = SektaUI.Theme:new()
 
