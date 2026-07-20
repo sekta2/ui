@@ -95,6 +95,7 @@ end
 ---@field border_color Color?
 ---@field border_width number
 ---@field corner_radius number
+---@field blur_intensity number
 ---@overload fun(): SUI_StyleBoxFlat
 local StyleBoxFlat = StyleBox:extend()
 
@@ -105,9 +106,17 @@ function StyleBoxFlat:new()
     self.border_color = nil
     self.border_width = 0
     self.corner_radius = 0
+    self.blur_intensity = 0
 end
 
 function StyleBoxFlat:Draw(x, y, w, h)
+    if self.blur_intensity > 0 then
+        SektaUI.RNDX().Rect(x, y, w, h)
+            :Rad(self.corner_radius)
+            :Blur(self.blur_intensity)
+            :Draw()
+    end
+
     SektaUI.RNDX.Draw(self.corner_radius, x, y, w, h, self.bg_color)
 
     if self.border_color and self.border_width > 0 then
