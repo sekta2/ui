@@ -37,9 +37,9 @@ end
 local DermaStyle = SektaUI.Default.Themes.Derma:AddElement("SUI_Button")
 
 DermaStyle.font = SektaUI.Default.DermaFont
-DermaStyle.font_normal_color = GWEN.TextureColor(4 + 8 * 2, 508)
-DermaStyle.font_hover_color = GWEN.TextureColor( 4 + 8 * 3, 508 )
-DermaStyle.font_pressed_color = GWEN.TextureColor( 4 + 8 * 2, 500 )
+DermaStyle.font_normal_color = SektaUI.Default.GWENGMod:GetColor(4 + 8 * 2, 508)
+DermaStyle.font_hover_color = SektaUI.Default.GWENGMod:GetColor( 4 + 8 * 3, 508 )
+DermaStyle.font_pressed_color = SektaUI.Default.GWENGMod:GetColor( 4 + 8 * 2, 500 )
 
 local btn_normal = SektaUI.StyleBoxTexture()
 btn_normal.material = SektaUI.Default.GWENGMod

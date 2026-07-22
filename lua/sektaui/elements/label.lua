@@ -56,7 +56,7 @@ end
 local DermaStyle = SektaUI.Default.Themes.Derma:AddElement("SUI_Label")
 
 DermaStyle.font = SektaUI.Default.DermaFont
-DermaStyle.font_color = GWEN.TextureColor( 4 + 8 * 8, 508 )
+DermaStyle.font_color = SektaUI.Default.GWENGMod:GetColor(4 + 8 * 8, 508)
 
 local label_normal = SektaUI.StyleBox()
 DermaStyle.style_normal = label_normal
