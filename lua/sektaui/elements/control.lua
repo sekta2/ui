@@ -22,6 +22,13 @@ function PANEL:GetCurrentStyleState()
     return "normal"
 end
 
+---@return number
+---@return number
+function PANEL:SUI_GetMinimumSize()
+    local vec = self.custom_minimum_size
+    return vec.x, vec.y
+end
+
 --[[-------------------------------------
     Theme
 --]]-------------------------------------
