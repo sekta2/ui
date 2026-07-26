@@ -1,9 +1,29 @@
 ---@diagnostic disable assign-type-mismatch
 
+--[[-------------------------------------
+    Size Flags
+--]] -------------------------------------
+
+---@alias SUI_SIZE_FLAGS integer
+
+SektaUI.SIZE_SHRINK_BEGIN  = 0
+SektaUI.SIZE_FILL          = 1
+SektaUI.SIZE_EXPAND        = 2
+SektaUI.SIZE_EXPAND_FILL   = 3
+SektaUI.SIZE_SHRINK_CENTER = 4
+SektaUI.SIZE_SHRINK_END    = 8
+
+--[[-------------------------------------
+    Control
+--]] -------------------------------------
+
 ---@class SUI_Control: SUI_Base
 ---@field custom_minimum_size Vector2
 ---@field custom_maximum_size Vector2
 ---@field anchor Anchor
+---@field container_size_horizontal SUI_SIZE_FLAGS
+---@field container_size_vertical SUI_SIZE_FLAGS
+---@field container_stretch_ratio number
 ---@field theme SUI_Theme?
 ---@field theme_override table<string, any>
 local PANEL = {
@@ -11,9 +31,12 @@ local PANEL = {
 }
 
 function PANEL:Init()
-    self.custom_minimum_size =  SektaUI.Vector2(0, 0)
+    self.custom_minimum_size = SektaUI.Vector2(0, 0)
     self.custom_maximum_size = SektaUI.Vector2(-1, -1)
     self.anchor = SektaUI.Anchor():PresetTopLeft(self:SUI_GetMinimumSize())
+    self.container_size_horizontal = SektaUI.SIZE_FILL
+    self.container_size_vertical = SektaUI.SIZE_FILL
+    self.container_stretch_ratio = 1
     self.theme_override = {}
 end
 
