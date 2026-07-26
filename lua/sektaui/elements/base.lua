@@ -12,6 +12,7 @@
 ---@field unique_index table<string, SUI_Base>
 ---@field on_changed_name SUI_Signal<fun(obj: SUI_Base, old_name: string, new_name: string)>
 ---@field on_remove SUI_Signal<fun(obj: SUI_Base)>
+---@field process SUI_Signal<fun(obj: SUI_Base)>
 local PANEL = {
     SUI_BASED = true,
     SUI_Class = "SUI_Base"
@@ -25,6 +26,7 @@ function PANEL:Init()
 
     self.on_changed_name = SektaUI.Signal()
     self.on_remove = SektaUI.Signal()
+    self.process = SektaUI.Signal()
 end
 
 --[[-------------------------------------
@@ -100,6 +102,14 @@ end
 ---@return SUI_Base
 function PANEL:GetRoot()
     return self.root or self:GetRootRecursive()
+end
+
+--[[-------------------------------------
+    Process
+--]]-------------------------------------
+
+function PANEL:Think()
+    self.process:Emit(self)
 end
 
 --[[-------------------------------------
