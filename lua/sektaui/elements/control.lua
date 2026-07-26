@@ -87,7 +87,7 @@ function PANEL:GetThemeParam(key)
     return (self:SUI_GetTheme()):GetElementParam(name, key)
 end
 
----@return StyleBox?
+---@return SUI_StyleBox?
 function PANEL:GetStyle()
     local state = self:GetCurrentStyleState()
     return self:GetThemeParam("style_" .. state)
