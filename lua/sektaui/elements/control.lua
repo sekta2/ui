@@ -1,8 +1,8 @@
 ---@diagnostic disable assign-type-mismatch
 
 ---@class SUI_Control: SUI_Base
----@field custom_minimum_size { x:number, y:number }
----@field custom_maximum_size { x:number, y:number }
+---@field custom_minimum_size Vector2
+---@field custom_maximum_size Vector2
 ---@field theme SUI_Theme?
 ---@field theme_override table<string, any>
 local PANEL = {
@@ -10,8 +10,8 @@ local PANEL = {
 }
 
 function PANEL:Init()
-    self.custom_minimum_size = { x = 0, y = 0 }
-    self.custom_maximum_size = { x = -1, y = -1 }
+    self.custom_minimum_size =  SektaUI.Vector2(0, 0)
+    self.custom_maximum_size = SektaUI.Vector2(-1, -1)
     self.theme_override = {}
 end
 
