@@ -73,13 +73,13 @@ end
 ---@return SUI_Theme?
 function PANEL:SUI_GetTheme()
     local parent = self:GetParent()
-    return self.theme or parent.theme or SektaUI.Default:GetTheme()
+    return self.theme or (IsValid(parent) and parent.theme) or SektaUI.Default:GetTheme()
 end
 
 ---@param key string
 ---@return any
 function PANEL:GetThemeParam(key)
-    if self.theme_override[key] then
+    if self.theme_override[key] ~= nil then
         return self.theme_override[key]
     end
 
