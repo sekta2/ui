@@ -43,6 +43,10 @@ load_element("button")
 load_element("label")
 load_element("texture")
 load_element("center_container")
+load_element("margin_container")
+load_element("hbox_container")
+load_element("vbox_container")
+load_element("panel_container")
 
 if SERVER then return end
 
@@ -51,11 +55,14 @@ concommand.Add("sui_test_center_container", function(ply, cmd, args, argStr)
         gui_test_root:Remove()
     end
 
-    gui_test_root = vgui.Create("SUI_Control")
-    gui_test_root:SetSize(1680, 1050)
+    gui_test_root = vgui.Create("SUI_PanelContainer")
+    gui_test_root:SetSize(800, 600)
+    gui_test_root:Center()
+
+    print(gui_test_root.Think)
 
     local button = vgui.Create("SUI_Button", gui_test_root)
     button.custom_minimum_size = SektaUI.Vector2(100, 50)
-
-    button.anchor:PresetCenterLeft(button:GetSize())
+    button.container_size_horizontal = bit.bor(SektaUI.SIZE_SHRINK_CENTER, SektaUI.SIZE_EXPAND)
+    button.container_size_vertical = bit.bor(SektaUI.SIZE_SHRINK_CENTER, SektaUI.SIZE_EXPAND)
 end)
