@@ -29,6 +29,38 @@ function PANEL:SUI_GetMinimumSize()
     return vec.x, vec.y
 end
 
+---@param parent_w number
+---@param parent_h number
+---@private
+function PANEL:SUI_ApplyAnchor(parent_w, parent_h)
+    if not self.anchor then return end
+
+    local min_w, min_h = self:SUI_GetMinimumSize()
+    local x, y, rw, rh = self.anchor:Resolve(parent_w, parent_h, min_w, min_h)
+
+    local max_w, max_h = self.custom_maximum_size.x, self.custom_maximum_size.y
+    if max_w >= 0 and rw > max_w then
+        rw = max_w
+    end
+    if max_h >= 0 and rh > max_h then
+        rh = max_h
+    end
+
+    self:SetPos(x, y)
+    self:SetSize(rw, rh)
+end
+
+---@param w number
+---@param h number
+---@private
+function PANEL:PerformLayout(w, h)
+    for _, child in ipairs(self:GetChildren()) do
+        if IsValid(child) and child.SUI_ApplyAnchor then
+            child:SUI_ApplyAnchor(w, h)
+        end
+    end
+end
+
 --[[-------------------------------------
     Theme
 --]]-------------------------------------
