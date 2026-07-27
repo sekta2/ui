@@ -68,7 +68,6 @@ function Scene:Instantiate(markup, parent)
         error(("SUI_Scene: failed to create element of class '%s'"):format(markup.class))
     end
 
-    -- обычные поля копируем как есть
     for key, value in pairs(markup) do
         if key ~= "class"
             and key ~= "children"
@@ -81,14 +80,12 @@ function Scene:Instantiate(markup, parent)
         end
     end
 
-    -- theme_override мёржим, а не перезаписываем целиком
     if markup.theme_override then
         for k, v in pairs(markup.theme_override) do
             obj.theme_override[k] = v
         end
     end
 
-    -- anchor_preset применяем поверх anchor
     if markup.anchor_preset then
         local anchor = obj.anchor or SektaUI.Anchor()
         local w, h = obj:SUI_GetMinimumSize()
@@ -110,23 +107,18 @@ function Scene:Instantiate(markup, parent)
         obj:SUI_SetUniqueName(markup.unique)
     end
 
-    -- ВАЖНО: применяем размер СЕЙЧАС, до создания детей —
-    -- иначе дети будут резолвить anchor против ещё не выставленного размера родителя
     if IsValid(parent) then
         local pw, ph = parent:GetSize()
         if obj.SUI_ApplyAnchor then
             obj:SUI_ApplyAnchor(pw, ph)
         end
     else
-        -- корневой элемент: родителя нет, применить anchor не к чему —
-        -- выставляем размер напрямую из минимального размера
         if obj.SUI_GetMinimumSize then
             local w, h = obj:SUI_GetMinimumSize()
             obj:SetSize(w, h)
         end
     end
 
-    -- дети — теперь родитель уже имеет правильный размер
     if markup.children then
         for i = 1, #markup.children do
             self:Instantiate(markup.children[i], obj)
