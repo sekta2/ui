@@ -12,6 +12,7 @@ if SERVER then
     AddCSLuaFile("style.lua")
     AddCSLuaFile("font.lua")
     AddCSLuaFile("default.lua")
+    AddCSLuaFile("scene.lua")
 else
     include("vector.lua")
     include("anchor.lua")
@@ -22,6 +23,7 @@ else
     include("style.lua")
     include("font.lua")
     include("default.lua")
+    include("scene.lua")
 end
 
 --[[-------------------------------------
@@ -49,22 +51,3 @@ load_element("vbox_container")
 load_element("panel_container")
 load_element("scroll_container")
 load_element("grid_container")
-
-if SERVER then return end
-
-concommand.Add("sui_test_center_container", function(ply, cmd, args, argStr)
-    if IsValid(gui_test_root) then
-        gui_test_root:Remove()
-    end
-
-    gui_test_root = vgui.Create("SUI_PanelContainer")
-    gui_test_root:SetSize(800, 600)
-    gui_test_root:Center()
-
-    print(gui_test_root.Think)
-
-    local button = vgui.Create("SUI_Button", gui_test_root)
-    button.custom_minimum_size = SektaUI.Vector2(100, 50)
-    button.container_size_horizontal = bit.bor(SektaUI.SIZE_SHRINK_CENTER, SektaUI.SIZE_EXPAND)
-    button.container_size_vertical = bit.bor(SektaUI.SIZE_SHRINK_CENTER, SektaUI.SIZE_EXPAND)
-end)
