@@ -1,5 +1,5 @@
 ---@class SUI_BaseButton: SUI_Control
----@field action_mode 1|2
+---@field action_mode ACTION_MODE_BUTTON
 ---@field pressed boolean
 ---@field button_down SUI_Signal<fun(obj: SUI_BaseButton)>
 ---@field button_up SUI_Signal<fun(obj: SUI_BaseButton)>
