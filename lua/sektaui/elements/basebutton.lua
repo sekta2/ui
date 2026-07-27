@@ -1,9 +1,9 @@
 ---@class SUI_BaseButton: SUI_Control
 ---@field action_mode 1|2
 ---@field pressed boolean
----@field button_down SUI_Signal<fun()>
----@field button_up SUI_Signal<fun()>
----@field button_pressed SUI_Signal<fun()>
+---@field button_down SUI_Signal<fun(obj: SUI_BaseButton)>
+---@field button_up SUI_Signal<fun(obj: SUI_BaseButton)>
+---@field button_pressed SUI_Signal<fun(obj: SUI_BaseButton)>
 local PANEL = {
     SUI_Class = "SUI_BaseButton",
 }
@@ -63,10 +63,10 @@ function PANEL:OnMousePressed(key_code)
     if key_code ~= MOUSE_LEFT then return end
 
     self.pressed = true
-    self.button_down:Emit()
+    self.button_down:Emit(self)
 
     if self.action_mode == ACTION_MODE_BUTTON_PRESS then
-        self.button_pressed:Emit()
+        self.button_pressed:Emit(self)
     end
 end
 
@@ -80,10 +80,10 @@ function PANEL:OnMouseReleased(key_code)
 
     if not self:IsEnabled() or not was_pressed then return end
 
-    self.button_up:Emit()
+    self.button_up:Emit(self)
 
     if self.action_mode == ACTION_MODE_BUTTON_RELEASE then
-        self.button_pressed:Emit()
+        self.button_pressed:Emit(self)
     end
 end
 
