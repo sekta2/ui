@@ -36,6 +36,32 @@ function PANEL:SUI_GetSeparation()
     return self.separation or self:GetThemeParam("separation") or 4
 end
 
+---@return number, number
+function PANEL:SUI_GetMinimumSize()
+    local children = self:GetChildren()
+    local separation = self:SUI_GetSeparation()
+
+    local total_w = 0
+    local max_h = 0
+    local count = 0
+
+    for i = 1, #children do
+        local child = children[i]
+        if child.SUI_BASED then
+            local cw, ch = child:SUI_GetMinimumSize()
+            total_w = total_w + cw
+            if ch > max_h then max_h = ch end
+            count = count + 1
+        end
+    end
+
+    if count > 1 then
+        total_w = total_w + separation * (count - 1)
+    end
+
+    return total_w, max_h
+end
+
 ---@param width number
 ---@param height number
 ---@private
