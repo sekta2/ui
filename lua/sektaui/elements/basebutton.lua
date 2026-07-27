@@ -62,6 +62,8 @@ function PANEL:OnMousePressed(key_code)
     if not self:IsEnabled() then return end
     if key_code ~= MOUSE_LEFT then return end
 
+    self:MouseCapture(true)
+
     self.pressed = true
     self.button_down:Emit(self)
 
@@ -74,6 +76,8 @@ end
 ---@private
 function PANEL:OnMouseReleased(key_code)
     if key_code ~= MOUSE_LEFT then return end
+
+    self:MouseCapture(false)
 
     local was_pressed = self.pressed
     self.pressed = false
