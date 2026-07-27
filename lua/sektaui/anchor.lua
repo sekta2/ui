@@ -39,6 +39,22 @@ function Anchor:new()
     }, self)
 end
 
+---@return Anchor
+function Anchor:Clone()
+    return setmetatable({
+        left = self.left,
+        right = self.right,
+        top = self.top,
+        bottom = self.bottom,
+        left_offset = self.left_offset,
+        right_offset = self.right_offset,
+        top_offset = self.top_offset,
+        bottom_offset = self.bottom_offset,
+        grow_horizontal = self.grow_horizontal,
+        grow_vertical = self.grow_vertical
+    }, Anchor)
+end
+
 ---@param left number
 ---@param right number
 ---@param top number
