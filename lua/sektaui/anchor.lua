@@ -258,6 +258,10 @@ function Anchor:PresetFullRect()
     return self
 end
 
+--[[-------------------------------------
+    Exports
+--]]-------------------------------------
+
 SektaUI.Anchor = setmetatable(Anchor, {
     __call = function(self, ...)
         return self:new()
