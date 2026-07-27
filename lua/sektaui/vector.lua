@@ -90,6 +90,10 @@ Vector2.__concat = function(self, other)
     return tostring(self) .. tostring(other)
 end
 
+--[[-------------------------------------
+    Exports
+--]]-------------------------------------
+
 SektaUI.Vector2 = setmetatable(Vector2, {
     __call = function(self, ...)
         return self:new(...)
