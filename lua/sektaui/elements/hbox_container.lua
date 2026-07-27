@@ -1,5 +1,4 @@
 ---@class SUI_HBoxContainer: SUI_Control
----@field separation number?
 local PANEL = {
     SUI_Class = "SUI_HBoxContainer"
 }
@@ -31,15 +30,10 @@ local function ResolveAxis(flags, allocated, actual)
     return 0, actual
 end
 
----@return number
-function PANEL:SUI_GetSeparation()
-    return self.separation or self:GetThemeParam("separation") or 4
-end
-
 ---@return number, number
 function PANEL:SUI_GetMinimumSize()
     local children = self:GetChildren()
-    local separation = self:SUI_GetSeparation()
+    local separation = self:GetThemeParam("separation")
 
     local total_w = 0
     local max_h = 0
@@ -72,7 +66,7 @@ function PANEL:PerformLayout(width, height)
     end
     if #children == 0 then return end
 
-    local separation = self:SUI_GetSeparation()
+    local separation = self:GetThemeParam("separation")
     local min_sizes = {}
     local total_min = 0
     local expand_ratio_sum = 0
