@@ -47,6 +47,8 @@ load_element("margin_container")
 load_element("hbox_container")
 load_element("vbox_container")
 load_element("panel_container")
+load_element("scroll_container")
+load_element("grid_container")
 
 if SERVER then return end
 
