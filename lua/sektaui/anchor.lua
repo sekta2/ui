@@ -1,4 +1,4 @@
----@diagnostic disable param-type-mismatch
+---@diagnostic disable: param-type-mismatch
 
 ---@alias ANCHOR_GROW 0|1|2
 

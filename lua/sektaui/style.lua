@@ -1,4 +1,4 @@
----@diagnostic disable assign-type-mismatch
+---@diagnostic disable: assign-type-mismatch
 
 --[[-------------------------------------
     Theme

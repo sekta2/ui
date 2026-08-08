@@ -1,4 +1,4 @@
----@diagnostic disable redundant-parameter
+---@diagnostic disable: redundant-parameter
 
 --
 -- classic

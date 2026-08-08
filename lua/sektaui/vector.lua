@@ -1,4 +1,4 @@
----@diagnostic disable param-type-mismatch
+---@diagnostic disable: param-type-mismatch
 
 ---@class Vector2
 ---@field x number

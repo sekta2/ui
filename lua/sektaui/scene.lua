@@ -1,4 +1,4 @@
----@diagnostic disable invisible
+---@diagnostic disable: invisible
 
 ---@alias AnchorPreset
 ---| "TopLeft"
@@ -37,8 +37,8 @@
 ---@field scroll_vertical_enabled boolean? **SUI_ScrollContainer**: Vertical scroll, default: `true`
 ---@field columns number? **SUI_GridContainer**: Columns, default: `1`
 ---@field text string? **SUI_Button**/**SUI_Label**: Text of button/label
----@field horizontal_alignment TEXT_ALIGNMENT_HORIZONTAL **SUI_Label**: Horizontal text alignment, default: `TEXT_ALIGN_LEFT`
----@field vertical_alignment TEXT_ALIGNMENT_VERTICAL **SUI_Label**: Vertical text alignment, default: `TEXT_ALIGN_TOP`
+---@field horizontal_alignment TEXT_ALIGNMENT_HORIZONTAL? **SUI_Label**: Horizontal text alignment, default: `TEXT_ALIGN_LEFT`
+---@field vertical_alignment TEXT_ALIGNMENT_VERTICAL? **SUI_Label**: Vertical text alignment, default: `TEXT_ALIGN_TOP`
 
 ---@class SUI_Scene
 ---@field markup SUI_MarkupObject
