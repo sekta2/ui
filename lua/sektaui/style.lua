@@ -72,7 +72,7 @@ function StyleBox:new()
     self.margin_bottom = 0
 end
 
-function StyleBox:Draw()
+function StyleBox:Draw(x, y, w, h)
 end
 
 ---@param x number
