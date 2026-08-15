@@ -84,6 +84,7 @@ end
 
 ---@return boolean
 function PANEL:IsRoot()
+    ---@type SUI_Base
     local parent = self:GetParent()
     if not (IsValid(parent) and parent.SUI_BASED) then return true end
 
