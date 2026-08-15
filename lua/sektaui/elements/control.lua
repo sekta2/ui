@@ -97,7 +97,8 @@ end
 function PANEL:SUI_GetTheme()
     ---@type SUI_Control
     local parent = self:GetParent()
-    return self.theme or (IsValid(parent) and parent.theme) or SektaUI.Default:GetTheme()
+
+    return self.theme or (IsValid(parent) and parent.SUI_GetTheme and parent:SUI_GetTheme()) or SektaUI.Default:GetTheme()
 end
 
 ---@param key string
