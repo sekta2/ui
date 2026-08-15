@@ -113,9 +113,9 @@ function Anchor:Resolve(parent_w, parent_h, min_w, min_h)
 
     if w < min_w then
         local diff = min_w - w
-        if self.grow_horizontal == ANCHOR_GROW_LEFT then
+        if self.grow_horizontal == SektaUI.ANCHOR_GROW_LEFT then
             x1 = x1 - diff
-        elseif self.grow_horizontal == ANCHOR_GROW_BOTH then
+        elseif self.grow_horizontal == SektaUI.ANCHOR_GROW_BOTH then
             x1 = x1 - diff / 2
         end
         w = min_w
@@ -123,9 +123,9 @@ function Anchor:Resolve(parent_w, parent_h, min_w, min_h)
 
     if h < min_h then
         local diff = min_h - h
-        if self.grow_vertical == ANCHOR_GROW_TOP then
+        if self.grow_vertical == SektaUI.ANCHOR_GROW_TOP then
             y1 = y1 - diff
-        elseif self.grow_vertical == ANCHOR_GROW_BOTH then
+        elseif self.grow_vertical == SektaUI.ANCHOR_GROW_BOTH then
             y1 = y1 - diff / 2
         end
         h = min_h
