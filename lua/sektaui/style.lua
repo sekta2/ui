@@ -57,6 +57,7 @@ end
 --]]-------------------------------------
 
 ---@class SUI_StyleBox: ClassicObject
+---@field super nil
 ---@field margin_left number
 ---@field margin_top number
 ---@field margin_right number
@@ -91,6 +92,7 @@ end
 --]]-------------------------------------
 
 ---@class SUI_StyleBoxFlat: SUI_StyleBox
+---@field super SUI_StyleBox
 ---@field bg_color Color
 ---@field border_color Color?
 ---@field border_width number
@@ -131,6 +133,7 @@ end
 ---@alias SUI_StyleBoxTextureMode "border"|"stretch"|"center"
 
 ---@class SUI_StyleBoxTexture: SUI_StyleBox
+---@field super SUI_StyleBox
 ---@field material IMaterial?
 ---@field tex_x number
 ---@field tex_y number
