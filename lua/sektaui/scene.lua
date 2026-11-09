@@ -55,7 +55,7 @@ function Scene:new(markup)
     return setmetatable(obj, self)
 end
 
----@param markup SUI_MarkupObject
+---@param markup SUI_MarkupObject?
 ---@param parent Panel?
 ---@return SUI_Control?
 function Scene:Instantiate(markup, parent)
