@@ -115,7 +115,7 @@ end
 
 --[[-------------------------------------
     Layout
---]] -------------------------------------
+--]]-------------------------------------
 
 ---@param width number
 ---@param height number
@@ -212,7 +212,7 @@ end
 
 --[[-------------------------------------
     Style
---]] -------------------------------------
+--]]-------------------------------------
 
 local DermaStyle = SektaUI.Default.Themes.Derma:AddElement("SUI_GridContainer")
 DermaStyle.h_separation = 4
@@ -220,6 +220,6 @@ DermaStyle.v_separation = 4
 
 --[[-------------------------------------
     Register
---]] -------------------------------------
+--]]-------------------------------------
 
 vgui.Register("SUI_GridContainer", PANEL, "SUI_Control")

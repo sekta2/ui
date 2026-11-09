@@ -40,7 +40,7 @@ end
 
 --[[-------------------------------------
     Style
---]] -------------------------------------
+--]]-------------------------------------
 
 local DermaStyle = SektaUI.Default.Themes.Derma:AddElement("SUI_MarginContainer")
 DermaStyle.margin_left = 0
@@ -50,6 +50,6 @@ DermaStyle.margin_bottom = 0
 
 --[[-------------------------------------
     Register
---]] -------------------------------------
+--]]-------------------------------------
 
 vgui.Register("SUI_MarginContainer", PANEL, "SUI_Control")

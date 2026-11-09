@@ -106,13 +106,13 @@ end
 
 --[[-------------------------------------
     Style
---]] -------------------------------------
+--]]-------------------------------------
 
 local DermaStyle = SektaUI.Default.Themes.Derma:AddElement("SUI_HBoxContainer")
 DermaStyle.separation = 4
 
 --[[-------------------------------------
     Register
---]] -------------------------------------
+--]]-------------------------------------
 
 vgui.Register("SUI_HBoxContainer", PANEL, "SUI_Control")

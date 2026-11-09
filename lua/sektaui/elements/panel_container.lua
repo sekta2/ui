@@ -61,7 +61,7 @@ end
 
 --[[-------------------------------------
     Style
---]] -------------------------------------
+--]]-------------------------------------
 
 local DermaStyle = SektaUI.Default.Themes.Derma:AddElement("SUI_PanelContainer")
 
@@ -77,6 +77,6 @@ DermaStyle.style_normal = panel_style
 
 --[[-------------------------------------
     Register
---]] -------------------------------------
+--]]-------------------------------------
 
 vgui.Register("SUI_PanelContainer", PANEL, "SUI_Control")
