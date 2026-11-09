@@ -20,7 +20,7 @@
 
 ---@class SUI_MarkupObject
 ---@field class string Classname, e.g.: Label / Texture / VBoxContainer
----@field children SUI_MarkupObject[] Node children
+---@field children SUI_MarkupObject[]? Node children
 ---@field name string? **SUI_Base**: Name of node, set's classname by default
 ---@field unique string? **SUI_Base**: Unique name
 ---@field theme SUI_Theme? **SUI_Control**: Custom theme
